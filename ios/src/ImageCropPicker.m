@@ -853,11 +853,7 @@ RCT_EXPORT_METHOD(openCropper:(NSDictionary *)options
 // Crop image has been canceled.
 - (void)imageCropViewControllerDidCancelCrop:
 (RSKImageCropViewController *)controller {
-    [self dismissCropper:controller selectionDone:NO completion:[self waitAnimationEnd:^{
-        if (self.currentSelectionMode == CROPPING || [[self.options objectForKey:@"cropping"] boolValue]) {
-            self.reject(ERROR_PICKER_CANCEL_KEY, ERROR_PICKER_CANCEL_MSG, nil);
-        }
-    }]];
+    [self dismissCropper:controller selectionDone:NO completion:nil];
 }
 
 - (void) dismissCropper:(RSKImageCropViewController*)controller selectionDone:(BOOL)selectionDone completion:(void (^)(void))completion {
